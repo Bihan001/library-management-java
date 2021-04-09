@@ -38,15 +38,21 @@ public class Database {
 
     public void assignBookToUser(String userId, String bookId) {
         User user = this.users.get(userId);
-        if (user != null) {
+        Book book = this.books.get(bookId);
+        if (user != null && book != null && book.getCount() > 0 && user.getCurrentBooks().indexOf(bookId) == -1) {
+            book.setCount(book.getCount() - 1);
             user.assignBookToUser(bookId);
         }
     }
 
     public void revokeBookFromUser(String userId, String bookId) {
         User user = this.users.get(userId);
+        Book book = this.books.get(bookId);
         if (user != null) {
             user.revokeBookFromUser(bookId);
+        }
+        if (book != null) {
+            book.setCount(book.getCount() + 1);
         }
     }
 
@@ -60,14 +66,14 @@ public class Database {
         return books.get(id);
     }
 
-    public Book createBook(String name, String author, ArrayList<String> genre) {
-        Book newBook = new Book(name, author, genre);
+    public Book createBook(String name, String author, int count, ArrayList<String> genre) {
+        Book newBook = new Book(name, author, count, genre);
         books.put(newBook.getId(), newBook);
         return newBook;
     }
 
-    public Book updateBook(String id, String name, String author, ArrayList<String> genre) {
-        return books.get(id).updateBook(name, author, genre);
+    public Book updateBook(String id, String name, String author, int count, ArrayList<String> genre) {
+        return books.get(id).updateBook(name, author, count, genre);
     }
 
     public void deleteBook(String id) {

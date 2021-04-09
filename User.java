@@ -21,6 +21,10 @@ public class User {
         return this.id;
     }
 
+    public ArrayList<String> getCurrentBooks() {
+        return this.currentBooks;
+    }
+
     public User updateUser(String name, String phone, String email, String address) {
         if (!name.isBlank())
             this.name = name;
@@ -34,8 +38,7 @@ public class User {
     }
 
     public void assignBookToUser(String bookId) {
-        if (this.currentBooks.indexOf(bookId) == -1)
-            this.currentBooks.add(bookId);
+        this.currentBooks.add(bookId);
     }
 
     public void revokeBookFromUser(String bookId) {

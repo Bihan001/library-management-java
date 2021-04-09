@@ -13,18 +13,24 @@ public class BooksUtility {
     public void createBook() {
         try {
             String name, author, genre;
+            int count = -1;
             ArrayList<String> genres = new ArrayList<String>();
             System.out.println("Create new book:");
             System.out.print("Enter name: ");
             name = br.readLine();
             System.out.print("Enter author: ");
             author = br.readLine();
+            System.out.print("Enter book count: ");
+            count = Integer.parseInt(br.readLine());
+            if (count < 0) {
+                count = 0;
+            }
             System.out.print("Enter genres(Seperate with ','): ");
             genre = br.readLine();
             for (String g : genre.split(",")) {
                 genres.add(g.trim());
             }
-            Book newBook = db.createBook(name, author, genres);
+            Book newBook = db.createBook(name, author, count, genres);
             System.out.println(newBook.toString());
         } catch (Exception e) {
             System.out.println(e);
@@ -47,6 +53,7 @@ public class BooksUtility {
     public void updateBook() {
         try {
             String id, name, author, genre;
+            int count = -1;
             ArrayList<String> genres = new ArrayList<String>();
             System.out.println("Update book:");
             System.out.print("Enter book id: ");
@@ -55,12 +62,17 @@ public class BooksUtility {
             name = br.readLine();
             System.out.print("Enter author: ");
             author = br.readLine();
+            System.out.print("Enter book count: ");
+            count = Integer.parseInt(br.readLine());
+            if (count < 0) {
+                count = 0;
+            }
             System.out.print("Enter genres(Seperate with ','): ");
             genre = br.readLine();
             for (String g : genre.split(",")) {
                 genres.add(g.trim());
             }
-            Book book = db.updateBook(id, name, author, genres);
+            Book book = db.updateBook(id, name, author, count, genres);
             System.out.println(book.toString());
         } catch (Exception e) {
             System.out.println(e);
