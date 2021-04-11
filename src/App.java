@@ -1,4 +1,3 @@
-
 /**
  * App
  */
@@ -14,6 +13,8 @@ public class App {
         // Initialising utility classes for accessing all the utility functions.
         UsersUtility usersUtility = new UsersUtility(db);
         BooksUtility booksUtility = new BooksUtility(db);
+
+        DB.createUsersTable();
 
         // Main menu
         Menu menu = new Menu(usersUtility, booksUtility);
