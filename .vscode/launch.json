@@ -1,0 +1,22 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    // Commenting this out so no matter which file we start debugging in, it always starts from src/App.java
+    // {
+    //     "type": "java",
+    //     "name": "Launch Current File",
+    //     "request": "launch",
+    //     "mainClass": "${file}"
+    // },
+    {
+      "type": "java",
+      "name": "Launch App",
+      "request": "launch",
+      "mainClass": "App",
+      "projectName": "libraryManagement_a588ee11"
+    }
+  ]
+}
