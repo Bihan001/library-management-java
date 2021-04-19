@@ -1,48 +1,26 @@
-import java.util.ArrayList;
-
 public class User {
     private String id;
     private String name;
     private String email;
     private String phone;
     private String address;
-    private ArrayList<String> currentBooks;
+    private String currentBooks;
 
-    User(String name, String phone, String email, String address) {
-        this.id = UID.generateUserUID();
+    User(String id, String name, String phone, String email, String address, String currentBooks) {
+        this.id = id;
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.address = address;
-        this.currentBooks = new ArrayList<String>();
+        this.currentBooks = currentBooks;
     }
 
     public String getId() {
         return this.id;
     }
 
-    public ArrayList<String> getCurrentBooks() {
+    public String getCurrentBooks() {
         return this.currentBooks;
-    }
-
-    public User updateUser(String name, String phone, String email, String address) {
-        if (!name.isBlank())
-            this.name = name;
-        if (!phone.isBlank())
-            this.phone = phone;
-        if (!email.isBlank())
-            this.email = email;
-        if (!address.isBlank())
-            this.address = address;
-        return this;
-    }
-
-    public void assignBookToUser(String bookId) {
-        this.currentBooks.add(bookId);
-    }
-
-    public void revokeBookFromUser(String bookId) {
-        this.currentBooks.remove(bookId);
     }
 
     @Override

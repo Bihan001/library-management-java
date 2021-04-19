@@ -7,8 +7,8 @@ public class Book {
     private int count;
     private ArrayList<String> genre;
 
-    Book(String name, String author, int count, ArrayList<String> genre) {
-        this.id = UID.generateBookUID();
+    Book(String id, String name, String author, int count, ArrayList<String> genre) {
+        this.id = id;
         this.name = name;
         this.author = author;
         this.genre = genre;

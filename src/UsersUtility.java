@@ -3,10 +3,10 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 public class UsersUtility {
-    private Database db;
+    private DB db;
     private static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-    UsersUtility(Database db) {
+    UsersUtility(DB db) {
         this.db = db;
     }
 
@@ -35,7 +35,7 @@ public class UsersUtility {
             System.out.println("Get user details:");
             System.out.print("Enter user id: ");
             id = br.readLine();
-            User user = db.getUserById(id);
+            User user = db.readUserByField("id", id);
             System.out.println(user.toString());
         } catch (Exception e) {
             System.out.println(e);

@@ -3,10 +3,10 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 public class BooksUtility {
-    private Database db;
+    private DB db;
     private static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-    BooksUtility(Database db) {
+    BooksUtility(DB db) {
         this.db = db;
     }
 
@@ -14,7 +14,6 @@ public class BooksUtility {
         try {
             String name, author, genre;
             int count = -1;
-            ArrayList<String> genres = new ArrayList<String>();
             System.out.println("Create new book:");
             System.out.print("Enter name: ");
             name = br.readLine();
@@ -27,10 +26,7 @@ public class BooksUtility {
             }
             System.out.print("Enter genres(Seperate with ','): ");
             genre = br.readLine();
-            for (String g : genre.split(",")) {
-                genres.add(g.trim());
-            }
-            Book newBook = db.createBook(name, author, count, genres);
+            Book newBook = db.createBook(name, author, count, genre);
             System.out.println(newBook.toString());
         } catch (Exception e) {
             System.out.println(e);
@@ -43,7 +39,7 @@ public class BooksUtility {
             System.out.println("Get book details:");
             System.out.print("Enter book id: ");
             id = br.readLine();
-            Book book = db.getBookById(id);
+            Book book = db.readBookByField("id", id);
             System.out.println(book.toString());
         } catch (Exception e) {
             System.out.println(e);
@@ -54,7 +50,6 @@ public class BooksUtility {
         try {
             String id, name, author, genre;
             int count = -1;
-            ArrayList<String> genres = new ArrayList<String>();
             System.out.println("Update book:");
             System.out.print("Enter book id: ");
             id = br.readLine();
@@ -63,16 +58,15 @@ public class BooksUtility {
             System.out.print("Enter author: ");
             author = br.readLine();
             System.out.print("Enter book count: ");
-            count = Integer.parseInt(br.readLine());
+            String countInput = br.readLine();
+            if (!countInput.isBlank())
+                Integer.parseInt(countInput);
             if (count < 0) {
                 count = 0;
             }
             System.out.print("Enter genres(Seperate with ','): ");
             genre = br.readLine();
-            for (String g : genre.split(",")) {
-                genres.add(g.trim());
-            }
-            Book book = db.updateBook(id, name, author, count, genres);
+            Book book = db.updateBook(id, name, author, count, genre);
             System.out.println(book.toString());
         } catch (Exception e) {
             System.out.println(e);
