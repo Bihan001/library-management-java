@@ -9,6 +9,13 @@
       "name": "Launch App",
       "request": "launch",
       "mainClass": "App",
+      "projectName": "library-management-java_805bd866"
+    },
+    {
+      "type": "java",
+      "name": "Launch App",
+      "request": "launch",
+      "mainClass": "App",
       "projectName": "libraryManagement_fa23727c"
     },
     {
